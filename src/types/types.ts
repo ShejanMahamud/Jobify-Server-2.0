@@ -23,4 +23,42 @@ export interface Candidate extends User {
   socials: {
     [key: string]: string;
   };
+  location: string;
+  phone: number;
+  job_alerts: {
+    role: string;
+    location: string;
+  };
+  profile_privacy: boolean;
+  resume_privacy: boolean;
+  notifications: {
+    shortlisted: boolean;
+    rejected: boolean;
+    savedProfile: boolean;
+    jobAlertsCount: number;
+  };
+}
+
+export interface Company extends User {
+  company_logo: string;
+  company_banner: string;
+  company_name: string;
+  about_us: string;
+  organization_type: string;
+  industry_type: string;
+  team_size: string;
+  yoe: string;
+  website: string;
+  company_vision: string;
+  socials: {
+    [key: string]: string;
+  };
+  location: string;
+  phone: number;
+  plan: 'free' | 'basic' | 'standard' | 'premium';
+  job_post_limit?: number;
+  resume_access?: number;
+  support_level?: 'none' | 'email' | 'chat' | 'priority' | '24/7';
+  featured_job_add?: boolean;
+  featured_company_add?: boolean;
 }
