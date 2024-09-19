@@ -57,8 +57,13 @@ export interface Company extends User {
   phone: number;
   plan: 'free' | 'basic' | 'standard' | 'premium';
   job_post_limit?: number;
-  resume_access?: number;
-  support_level?: 'none' | 'email' | 'chat' | 'priority' | '24/7';
-  featured_job_add?: boolean;
-  featured_company_add?: boolean;
+  urgent_job_limit?: number;
+  resume_access_limit?: number;
+  featured_job_limit?: number;
+  featured_company?: boolean;
+  saved_candidate_limit?: number;
+}
+export interface DecodedToken {
+  email: string;
+  role: string;
 }

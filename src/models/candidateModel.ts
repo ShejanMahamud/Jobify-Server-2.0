@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 import { Candidate } from '../types/types';
-import UserModel from './user';
+import UserModel from './userModel';
 
 const candidateSchema: Schema<Candidate> = new mongoose.Schema(
   {
