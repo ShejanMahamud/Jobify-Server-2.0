@@ -7,6 +7,7 @@ export interface User extends Document {
   email: string;
   role: string;
   profile_picture: string;
+  password: string;
 }
 
 export interface Candidate extends User {
@@ -64,6 +65,5 @@ export interface Company extends User {
   saved_candidate_limit?: number;
 }
 export interface DecodedToken {
-  email: string;
-  role: string;
+  token: string;
 }

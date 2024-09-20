@@ -28,6 +28,10 @@ const userSchema: Schema<User> = new mongoose.Schema(
       type: String,
       default: 'https://i.ibb.co.com/6F9w4Ps/boy.png',
     },
+    password: {
+      type: String,
+      required: [true, 'Password must be provided'],
+    },
   },
   {
     timestamps: true,
