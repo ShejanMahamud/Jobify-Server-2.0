@@ -2,9 +2,9 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import express, { NextFunction, Request, Response } from 'express';
 import passport from 'passport';
-import authRouter from '../src/routes/auth';
-import userRouter from '../src/routes/user';
 import { connectDB } from './db/connectDB';
+import authRouter from './routes/auth';
+import userRouter from './routes/user';
 import { CustomError } from './utils/customError';
 dotenv.config();
 
@@ -23,7 +23,7 @@ app.use(
 
 //setup passport
 app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.session());
 
 app.get('/', (req: Request, res: Response) => {
   res.send({

@@ -24,6 +24,9 @@ passport.use(
       try {
         const email = profile.emails?.[0].value;
         const fullName = profile.displayName;
+        const username =
+          profile.username ||
+          profile.displayName.replace(/\s+/g, '').toLowerCase();
         const profile_picture =
           profile.photos?.[0].value || 'https://i.ibb.co.com/6F9w4Ps/boy.png';
 
@@ -36,6 +39,7 @@ passport.use(
         if (!user) {
           user = new UserModel({
             fullName,
+            username,
             email,
             profile_picture,
             role: 'candidate',
@@ -61,12 +65,15 @@ passport.use(
 
 router.get(
   '/google',
-  passport.authenticate('google', { scope: ['profile', 'email'] })
+  passport.authenticate('google', {
+    scope: ['profile', 'email'],
+    session: false,
+  })
 );
 
 router.get(
   '/google/callback',
-  passport.authenticate('google', { failureRedirect: '/' }),
+  passport.authenticate('google', { failureRedirect: '/', session: false }),
   (req: Request, res: Response) => {
     if (!req.user) {
       return res.status(401).json({
@@ -75,11 +82,7 @@ router.get(
       });
     }
     const { token } = req.user;
-    res.json({
-      success: true,
-      message: 'Successfully logged in with Google!',
-      token: token,
-    });
+    res.redirect(`http://localhost:3000?token=${token}`);
   }
 );
 

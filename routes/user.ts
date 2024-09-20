@@ -6,7 +6,7 @@ import {
   getAllUser,
   getUser,
   loginUser,
-} from '../controllers/userController';
+} from '../controllers/userController.js';
 import { verifyToken } from '../middleware/verifyToken.js';
 
 const router = express.Router();

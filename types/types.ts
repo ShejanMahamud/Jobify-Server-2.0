@@ -7,7 +7,7 @@ export interface User extends Document {
   email: string;
   role: string;
   profile_picture: string;
-  password: string;
+  password?: string;
 }
 
 export interface Candidate extends User {
